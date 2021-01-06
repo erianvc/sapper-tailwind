@@ -4,10 +4,14 @@
 
 <h1>Great success!</h1>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<p>
+    <strong>Try editing this file (src/routes/index.svelte) to test live
+        reloading.</strong>
+</p>
 
 <style>
-    h1, p {
+    h1,
+    p {
         @apply text-center my-0 mx-auto;
     }
 

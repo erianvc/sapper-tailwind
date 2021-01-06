@@ -1,8 +1,8 @@
 <script>
-    export let status;
-    export let error;
+    export let status
+    export let error
 
-    const dev = process.env.NODE_ENV === 'development';
+    const dev = process.env.NODE_ENV === 'development'
 </script>
 
 <svelte:head>
@@ -18,7 +18,8 @@
 {/if}
 
 <style>
-    h1, p {
+    h1,
+    p {
         @apply text-center my-0 mx-auto;
     }
 
