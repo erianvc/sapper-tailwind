@@ -18,5 +18,28 @@ module.exports = {
                 'svelte3/ignore-styles': () => true,
             },
         },
+        {
+            plugins: ['jest'],
+            extends: ['plugin:jest/recommended'],
+            files: ['src/**/*.spec.js'],
+            rules: {
+                'jest/no-disabled-tests': 'warn',
+                'jest/no-focused-tests': 'error',
+                'jest/no-identical-title': 'error',
+                'jest/prefer-to-have-length': 'warn',
+                'jest/valid-expect': 'error',
+            },
+            env: {
+                'jest/globals': true,
+            },
+        },
+        {
+            plugins: ['cypress'],
+            extends: ['plugin:cypress/recommended'],
+            files: ['cypress/**/*'],
+            env: {
+                'cypress/globals': true,
+            },
+        },
     ],
 }

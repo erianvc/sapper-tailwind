@@ -1,25 +1,9 @@
-<svelte:head>
-    <title>Sapper project template</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<p>
-    <strong>Try editing this file (src/routes/index.svelte) to test live
-        reloading.</strong>
-</p>
+<section>
+    <h1>Sapper with TailwindCSS Template</h1>
+</section>
 
 <style>
-    h1,
-    p {
-        @apply text-center my-0 mx-auto;
-    }
-
     h1 {
-        @apply text-4xl uppercase font-bold mb-2 sm:text-5xl;
-    }
-
-    p {
-        @apply my-4 mx-auto;
+        @apply text-4xl font-bold lg:text-6xl;
     }
 </style>

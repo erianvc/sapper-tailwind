@@ -6,6 +6,7 @@ import babel from '@rollup/plugin-babel'
 import svelte from 'rollup-plugin-svelte'
 import alias from '@rollup/plugin-alias'
 import sveltePreprocess from 'svelte-preprocess'
+import istanbul from 'rollup-plugin-istanbul'
 import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
@@ -62,6 +63,10 @@ export default {
             resolve({
                 browser: true,
                 dedupe: ['svelte'],
+            }),
+            istanbul({
+                include: ['src/components/**'],
+                exclude: ['**/*spec.js'],
             }),
             commonjs(),
 
