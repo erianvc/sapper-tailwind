@@ -1,9 +1,11 @@
+import path from 'path'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import commonjs from '@rollup/plugin-commonjs'
-import svelte from 'rollup-plugin-svelte'
-import sveltePreprocess from 'svelte-preprocess'
 import babel from '@rollup/plugin-babel'
+import svelte from 'rollup-plugin-svelte'
+import alias from '@rollup/plugin-alias'
+import sveltePreprocess from 'svelte-preprocess'
 import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
@@ -20,6 +22,11 @@ const onwarn = (warning, onwarn) =>
 
 const preprocess = sveltePreprocess({ postcss: true })
 
+const projectRootDir = path.resolve(__dirname)
+const customResolver = resolve({
+    extensions: ['.mjs', '.js', '.json', '.svelte'],
+})
+
 export default {
     client: {
         input: config.client.input(),
@@ -35,6 +42,22 @@ export default {
                     dev,
                     hydratable: true,
                 },
+            }),
+            alias({
+                entries: [
+                    {
+                        find: 'utils',
+                        replacement: path.resolve(projectRootDir, 'src/utils'),
+                    },
+                    {
+                        find: '@assets',
+                        replacement: path.resolve(projectRootDir, 'src/assets'),
+                    },
+                    {
+                        find: '@components', replacement: path.resolve(projectRootDir, 'src/components'),
+                    },
+                ],
+                customResolver,
             }),
             resolve({
                 browser: true,
@@ -92,6 +115,22 @@ export default {
                     hydratable: true,
                 },
                 emitCss: false,
+            }),
+            alias({
+                entries: [
+                    {
+                        find: 'utils',
+                        replacement: path.resolve(projectRootDir, 'src/utils'),
+                    },
+                    {
+                        find: '@assets',
+                        replacement: path.resolve(projectRootDir, 'src/assets'),
+                    },
+                    {
+                        find: '@components', replacement: path.resolve(projectRootDir, 'src/components'),
+                    },
+                ],
+                customResolver,
             }),
             resolve({
                 dedupe: ['svelte'],
