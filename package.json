@@ -1,7 +1,7 @@
 {
   "name": "sapper-tailwind",
   "description": "sapper-tailwind",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "node __sapper__/build",
     "dev": "run-p css:watch sapper:dev",
