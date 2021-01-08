@@ -9,25 +9,30 @@
     <title>{status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
+<section>
+    <h1>{status}</h1>
+    <p>{error.message}</p>
 
-<p>{error.message}</p>
-
-{#if dev && error.stack}
-    <pre>{error.stack}</pre>
-{/if}
+    {#if dev && error.stack}
+        <pre>{error.stack}</pre>
+    {/if}
+</section>
 
 <style>
-    h1,
-    p {
-        @apply text-center my-0 mx-auto;
+    section {
+        @apply text-center sm:px-8;
     }
 
     h1 {
-        @apply text-4xl uppercase font-bold mb-2 sm:text-5xl;
+        @apply font-bold text-9xl;
+        color: #159794;
     }
 
     p {
-        @apply my-4 mx-auto;
+        @apply mx-auto my-4 text-2xl leading-5 dark:text-white;
+    }
+
+    pre {
+        @apply max-w-screen-sm px-4 py-4 mx-auto font-light text-white whitespace-pre-wrap bg-gray-600 rounded;
     }
 </style>
